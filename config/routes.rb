@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 	root 'paginas#home'
  	get 'sobre', to: 'paginas#sobre'
 
+ 	resources :artigos
+
 end
