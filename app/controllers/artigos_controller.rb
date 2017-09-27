@@ -1,6 +1,15 @@
 class ArtigosController < ApplicationController
+	
+	def index
+		@artigos = Artigo.all
+	end
+
 	def new
 		@artigo = Artigo.new
+	end
+
+	def edit
+		@artigo = Artigo.find(params[:id])
 	end
 
 	def create
@@ -10,6 +19,16 @@ class ArtigosController < ApplicationController
 			redirect_to artigo_path(@artigo)
 		else
 			render :new
+		end
+	end
+
+	def update
+		@artigo = Artigo.find(params[:id])
+		if @artigo.update(artigo_params)
+			flash[:notice] = "Artigo foi editado com sucesso!"
+			redirect_to artigo_path(@artigo)
+		else
+			render :edit
 		end
 	end
 

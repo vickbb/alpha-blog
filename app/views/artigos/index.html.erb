@@ -1,0 +1,17 @@
+<h1>Listando todos artigos</h1>
+<p><%= link_to "Criar novo artigo", new_artigo_path %></p>
+<table>
+	<tr>
+		<th>Titulo</th>
+		<th>Descrição</th>
+	</tr>
+
+	<% @artigos.each do |artigo| %>
+	<tr>
+		<td><%= artigo.titulo %></td>
+		<td><%= artigo.descricao %></td>
+		<td><%= link_to :Edit, edit_artigo_path(artigo) %></td>
+		<td><%= link_to :Show, artigo_path(artigo) %></td>
+	</tr>
+	<% end %>
+</table>
