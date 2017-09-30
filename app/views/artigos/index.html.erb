@@ -12,6 +12,7 @@
 		<td><%= artigo.descricao %></td>
 		<td><%= link_to :Edit, edit_artigo_path(artigo) %></td>
 		<td><%= link_to :Show, artigo_path(artigo) %></td>
+		<td><%= link_to :Delete, artigo_path(artigo), method: :delete, data: {confirm: "Você tem certeza?"} %></td>
 	</tr>
 	<% end %>
 </table>

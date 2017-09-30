@@ -36,6 +36,13 @@ class ArtigosController < ApplicationController
 		@artigo = Artigo.find(params[:id])
 	end
 
+	def destroy
+		@artigo = Artigo.find(params[:id])
+		@artigo.destroy
+		flash[:notice] = "Artigo foi removido com sucesso!"
+		redirect_to artigos_path
+	end
+
 	private
 	def artigo_params
 		params.require(:artigo).permit(:titulo, :descricao)
