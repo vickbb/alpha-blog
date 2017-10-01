@@ -16,7 +16,7 @@ class ArtigosController < ApplicationController
 	def create
 		@artigo = Artigo.new(artigo_params)
 		if @artigo.save
-			flash[:notice] = "Artigo foi criado com sucesso!"
+			flash[:success] = "Artigo foi criado com sucesso!"
 			redirect_to artigo_path(@artigo)
 		else
 			render :new
@@ -25,7 +25,7 @@ class ArtigosController < ApplicationController
 
 	def update
 		if @artigo.update(artigo_params)
-			flash[:notice] = "Artigo foi editado com sucesso!"
+			flash[:success] = "Artigo foi editado com sucesso!"
 			redirect_to artigo_path(@artigo)
 		else
 			render :edit
@@ -37,7 +37,7 @@ class ArtigosController < ApplicationController
 
 	def destroy
 		@artigo.destroy
-		flash[:notice] = "Artigo foi removido com sucesso!"
+		flash[:danger] = "Artigo foi removido com sucesso!"
 		redirect_to artigos_path
 	end
 

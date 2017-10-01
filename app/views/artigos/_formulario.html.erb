@@ -1,11 +1,4 @@
-<% if @artigo.errors.any? %>
-<h2>Os seguintes erros estão prevenindo o artigo de ser criado</h2>
-	<ul>
-		<% @artigo.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-	</ul>
-<% end %>
+<%= render "compartilhado/erros", objeto: @artigo %>
 
 <div class="col-xs-12">
 	<%= form_for(@artigo, :html => {class: "form-horizontal", role: "form"}) do |f| %>
