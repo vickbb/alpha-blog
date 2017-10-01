@@ -1,18 +1,21 @@
 <h1 id="titulo">Listando todos artigos</h1>
-<p><%= link_to "Criar novo artigo", new_artigo_path %></p>
-<table>
-	<tr>
-		<th>Titulo</th>
-		<th>Descrição</th>
-	</tr>
-
-	<% @artigos.each do |artigo| %>
-	<tr>
-		<td><%= artigo.titulo %></td>
-		<td><%= artigo.descricao %></td>
-		<td><%= link_to :Edit, edit_artigo_path(artigo) %></td>
-		<td><%= link_to :Show, artigo_path(artigo) %></td>
-		<td><%= link_to :Delete, artigo_path(artigo), method: :delete, data: {confirm: "Você tem certeza?"} %></td>
-	</tr>
-	<% end %>
-</table>
+	
+<% @artigos.each do |artigo| %>
+	<div class="container">
+			<div class="well">
+				<div class="tilulo-artigo">
+					<%= link_to artigo.titulo, artigo_path(artigo) %>
+				</div>
+				<div class="corpo-artigo">
+					<%= truncate(artigo.descricao, lenght: 100) %>
+				</div>
+				<div class="acoes-artigo">
+					<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
+									class: "btn btn-sm btn-primary" %>
+					<%= link_to "Deletar esse artigo", artigo_path(artigo), method: :delete,
+					  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
+					  				class: "btn btn-sm btn-danger"%>
+				</div>	
+			</div>
+	</div>
+<% end %>
