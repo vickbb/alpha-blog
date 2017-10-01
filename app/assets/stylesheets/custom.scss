@@ -3,6 +3,7 @@
 
 #titulo {
 	margin-top: 50px;
+	margin-bottom: 30px;
 	text-align: center;
 }
 
@@ -44,6 +45,15 @@
 	color: #fff;
 	text-shadow: 1px 1px black;
 	text-align: center;
+}
+
+.acoes-artigo {
+	border-top: 1px solid #eaeaea;
+	padding-top: 5px;
+}
+
+.descricao {
+	margin-top: 0px;
 }
 
 footer {
