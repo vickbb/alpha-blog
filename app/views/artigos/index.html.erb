@@ -8,6 +8,12 @@
 				</div>
 				<div class="corpo-artigo">
 					<%= truncate(artigo.descricao, lenght: 100) %>
+					<div class="artigo-detalhes">
+						<small>Criado por: <%= artigo.usuario.username if artigo.usuario %>,
+							<%= time_ago_in_words(artigo.created_at) %> atrás,
+							ultima atualização: <%= time_ago_in_words(artigo.updated_at) %> atrás.
+						</small>
+					</div>
 				</div>
 				<div class="acoes-artigo">
 					<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
