@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 
  	resources :artigos
 
+ 	get 'signup', to: 'usuarios#new'
+ 	post 'usuarios', to: 'usuarios#create'
+
+ 	#ou resourses :usuarios, except[:new]
+
 end
