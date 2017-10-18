@@ -1,27 +1,3 @@
 <h1 id="titulo">Listando todos artigos</h1>
-	
-<% @artigos.each do |artigo| %>
-	<div class="container">
-			<div class="well">
-				<div class="tilulo-artigo">
-					<%= link_to artigo.titulo, artigo_path(artigo) %>
-				</div>
-				<div class="corpo-artigo">
-					<%= truncate(artigo.descricao, lenght: 100) %>
-					<div class="artigo-detalhes">
-						<small>Criado por: <%= artigo.usuario.username if artigo.usuario %>,
-							<%= time_ago_in_words(artigo.created_at) %> atrás,
-							ultima atualização: <%= time_ago_in_words(artigo.updated_at) %> atrás.
-						</small>
-					</div>
-				</div>
-				<div class="acoes-artigo">
-					<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
-									class: "btn btn-sm btn-primary" %>
-					<%= link_to "Deletar esse artigo", artigo_path(artigo), method: :delete,
-					  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
-					  				class: "btn btn-sm btn-danger"%>
-				</div>	
-			</div>
-	</div>
-<% end %>
+
+<%= render 'artigo', obj: @artigos %>
