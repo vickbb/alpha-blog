@@ -14,6 +14,19 @@ class UsuariosController < ApplicationController
 		end
 	end
 
+	def edit
+		@usuario = Usuario.find(params[:id])
+	end
+
+	def update
+		@usuario = Usuario.find(params[:id])
+		if @usuario.update(usuario_params)
+			flash[:sucess] = "Sua conta foi atualizada"
+			redirect_to artigos_path
+		else
+			render 'edit'
+		end
+	end
 
 	private
 	def usuario_params
