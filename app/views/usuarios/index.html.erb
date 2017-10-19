@@ -1,0 +1,21 @@
+<h1 align="center">Todos Bloggers</h1>
+
+<% @usuarios.each do |usuario|%>
+	<ul class="listando">
+		<div class="row">
+			<div class="well">
+				<li>
+					<%= link_to gravatar_for(usuario), usuario_path(usuario) %>
+				</li>
+				<li class="titulo-artigo">
+					<%= link_to usuario.username, usuario_path(usuario) %>
+				</li>
+				<li>
+					<small>
+						<%= pluralize(usuario.artigos.count, "artigo") if usuario.artigos %>
+					</small>
+				</li>
+			</div>
+		</div>
+	</ul>
+<% end %>
