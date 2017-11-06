@@ -15,13 +15,15 @@
 						</small>
 					</div>
 				</div>
-				<div class="acoes-artigo">
-					<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
-									class: "btn btn-sm btn-primary" %>
-					<%= link_to "Deletar esse artigo", artigo_path(artigo), method: :delete,
-					  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
-					  				class: "btn btn-sm btn-danger"%>
-				</div>	
+				<% if logged_in? && usuario_atual == artigo.usuario %>
+					<div class="acoes-artigo">
+						<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
+										class: "btn btn-sm btn-primary" %>
+						<%= link_to "Deletar esse artigo", artigo_path(artigo), method: :delete,
+						  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
+						  				class: "btn btn-sm btn-danger"%>
+					</div>	
+				<% end %>
 			</div>
 	</div>
 

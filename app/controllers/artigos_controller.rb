@@ -1,9 +1,11 @@
 class ArtigosController < ApplicationController
 	
 	before_action :set_artigo, only: [:edit, :update, :show, :destroy]
+	before_action :require_user, except: [:index, :show]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def index
-		@artigos = Artigo.all
+		@artigos = Artigo.paginate(page: params[:page], per_page: 5)
 	end
 
 	def new
@@ -15,7 +17,7 @@ class ArtigosController < ApplicationController
 
 	def create
 		@artigo = Artigo.new(artigo_params)
-		@artigo.usuario = User.first
+		@artigo.usuario = usuario_atual
 		if @artigo.save
 			flash[:success] = "Artigo foi criado com sucesso!"
 			redirect_to artigo_path(@artigo)
@@ -49,5 +51,12 @@ class ArtigosController < ApplicationController
 
 	def artigo_params
 		params.require(:artigo).permit(:titulo, :descricao)
+	end
+
+	def require_same_user
+		if usuario_atual != @artigo.usuario
+			flash[:danger] = "Você só pode modificar ou editar seus artigos!"
+			redirect_to root_path
+		end
 	end
 end
