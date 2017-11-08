@@ -21,7 +21,7 @@
             <%= link_to 'Log out', logout_path, method: :delete, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil</a>
+            <a class="nav-link dropdown-toggle" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil <%= "Admin" if usuario_atual.admin? %> </a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <%= link_to "Editar perfil", edit_usuario_path(usuario_atual), class: "dropdown-item" %>
             </div>

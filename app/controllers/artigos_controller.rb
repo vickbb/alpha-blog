@@ -1,5 +1,5 @@
 class ArtigosController < ApplicationController
-	
+
 	before_action :set_artigo, only: [:edit, :update, :show, :destroy]
 	before_action :require_user, except: [:index, :show]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
@@ -54,7 +54,7 @@ class ArtigosController < ApplicationController
 	end
 
 	def require_same_user
-		if usuario_atual != @artigo.usuario
+		if usuario_atual != @artigo.usuario and !usuario_atual.admin?5
 			flash[:danger] = "Você só pode modificar ou editar seus artigos!"
 			redirect_to root_path
 		end

@@ -1,6 +1,4 @@
-	
 <% obj.each do |artigo| %>
-
 	<div class="container">
 			<div class="well">
 				<div class="tilulo-artigo">
@@ -15,14 +13,14 @@
 						</small>
 					</div>
 				</div>
-				<% if logged_in? && usuario_atual == artigo.usuario %>
+				<% if logged_in? && (usuario_atual == artigo.usuario || usuario_atual.admin?) %>
 					<div class="acoes-artigo">
-						<%= link_to "Editar este artigo", edit_artigo_path(artigo), 
+						<%= link_to "Editar este artigo", edit_artigo_path(artigo),
 										class: "btn btn-sm btn-primary" %>
 						<%= link_to "Deletar esse artigo", artigo_path(artigo), method: :delete,
-						  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
+						  				data: { confirm: "Você tem certeza que deseja deletar esse artigo?" },
 						  				class: "btn btn-sm btn-danger"%>
-					</div>	
+					</div>
 				<% end %>
 			</div>
 	</div>

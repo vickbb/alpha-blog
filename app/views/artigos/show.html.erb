@@ -24,10 +24,10 @@
 	<hr>
 		<%= simple_format(@artigo.descricao) %>
 	<div class="acoes-artigo">
-		<% if logged_in? && usuario_atual == @artigo.usuario %>
+		<% if logged_in? && (usuario_atual == @artigo.usuario || usuario_atual.admin?) %>
 			<%= link_to "Editar este artigo", edit_artigo_path(@artigo), class: "btn btn-sm btn-primary" %>
 			<%= link_to "Deletar esse artigo", artigo_path(@artigo), method: :delete,
-		  							data: { confirm: "Você tem certeza que deseja deletar esse artigo?" }, 
+		  							data: { confirm: "Você tem certeza que deseja deletar esse artigo?" },
 		  							class: "btn btn-sm btn-danger"%>
 		<% end %>
 		<%= link_to "Visualizar todos artigos", artigos_path, class: "btn btn-sm btn-success" %>
